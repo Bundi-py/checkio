@@ -20,17 +20,17 @@ def between_markers(text: str, begin: str, end: str) -> str:
     if begin in text:
         start = text.find(begin)+len(begin)
     else:
-        start = len(text) - 1
+        start = 0
 
     if end in text:
-        kraj = text.find(end)+1
+        kraj = text.find(end)
     else:
-        kraj = len(text) - 1
+        kraj = len(text)
 
     if start < kraj:
-        substring = text[start:kraj-1]
+        substring = text[start:kraj]
     elif start > kraj:
-        substring = text[:kraj]
+        substring = ''
     elif start == kraj:
         substring = ''
     return substring
@@ -38,5 +38,12 @@ def between_markers(text: str, begin: str, end: str) -> str:
 
 if __name__ == '__main__':
     print('Example:')
-    print(between_markers("<head><title>My new site</title></head>",
-                          "<title>", "</title>"))
+    print(between_markers('No <hi>', '>', '<'))
+
+    # print(between_markers('What is >apple<', '>', '<')# == "apple", "One sym"
+    # print(between_markers("<head><title>My new site</title></head>",
+    #                        "<title>", "</title>")# == "My new site", "HTML"
+    # print(between_markers('No[/b] hi', '[b]', '[/b]')# == 'No', 'No opened'
+    # print(between_markers('No [b]hi', '[b]', '[/b]') #== 'hi', 'No close'
+    # print(between_markers('No hi', '[b]', '[/b]') #== 'No hi', 'No markers at all'
+    # print(between_markers('No <hi>', '>', '<')# == '', 'Wrong direction'
