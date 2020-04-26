@@ -1,9 +1,6 @@
 def bigger_price(limit: int, data: list) -> list:
-    """
-        TOP most expensive goods
-    """
-    # your code here
-    return print()
+    newlist = sorted(data, key=lambda k: k['price'], reverse=True)
+    return newlist[0:limit]
 
 
 if __name__ == '__main__':
