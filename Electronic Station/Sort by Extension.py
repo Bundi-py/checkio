@@ -16,31 +16,41 @@ import string
 
 
 def sort_by_ext(files):
-    b = []
-    for i in files:
-        b.append(i.split('.'))
-    # [['1', 'cad'], ['1', 'bat'], ['1', 'aa'], ['2', 'bat']]
-    d = []
-    for i in range(len(b)):
-        d.append([b[i][1]] + [b[i][0]])
-    # d = [['aa', '1'], ['bat', '1'], ['cad', '1'], ['bat', '2']]
-    e = []
-    e = sorted(d, key=lambda x: x[0])
-    [['aa', '1'], ['bat', '1'], ['bat', '2'], ['cad', '1']]
+    return files.sort(key=lambda f: os.path.splitext(f)[1])
 
-    f = []
-    for i in range(len(e)):
-        f.append(e[i][1] + '.' + e[i][0])
-    # f = ['1.aa', '1.bat', '2.bat', '1.cad']
+    # ext = []
+    # name = []
+    # for i in files:
+    #     if i.rsplit('.', 1)[0] == '':
+    #         ext.append(i)
+    #     else:
+    #         name.append(i)
+    # return sorted(ext) + sorted(name)
 
-    for i in range(len(f)):
-        if f[i][0] == '.':
-            a = f[i]
-            f.remove(a)
-            f.insert(0, a)
-            # break
+    # b = []
+    # for i in files:
+    #     b.append(i.split('.'))
+    # # [['1', 'cad'], ['1', 'bat'], ['1', 'aa'], ['2', 'bat']]
+    # d = []
+    # for i in range(len(b)):
+    #     d.append([b[i][1]] + [b[i][0]])
+    # # d = [['aa', '1'], ['bat', '1'], ['cad', '1'], ['bat', '2']]
+    # e = []
+    # e = sorted(d, key=lambda x: x[0])
+    # [['aa', '1'], ['bat', '1'], ['bat', '2'], ['cad', '1']]
 
-    return f
+    # f = []
+    # for i in range(len(e)):
+    #     f.append(e[i][1] + '.' + e[i][0])
+    # # f = ['1.aa', '1.bat', '2.bat', '1.cad']
+
+    # for i in range(len(f)):
+    #     if f[i][0] == '.':
+    #         a = f[i]
+    #         f.remove(a)
+    #         f.insert(0, a)
+
+    # return f
 
 
 if __name__ == '__main__':
