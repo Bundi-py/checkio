@@ -7,6 +7,7 @@
 # Precondition: both given ints should be between -1000 and 1000
 
 from typing import Tuple
+str.
 
 
 def sum_by_types(items: list) -> Tuple[str, int]:
