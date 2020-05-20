@@ -13,14 +13,14 @@
 def caps_lock(text: str) -> str:
     novi = ''
     c = False
-    for i in range(len(text)):
-        if text[i] == 'a':
+    for i in text:
+        if i == 'a':
             c = not c
             continue
         if c:
-            novi += text[i].upper()
+            novi += i.upper()
         else:
-            novi += text[i]
+            novi += i
 
     return novi
 
