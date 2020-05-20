@@ -19,43 +19,40 @@
 
 
 def checkio(text, word):
-    novi = text.strip().replace(' ', '')
-    reci = novi.split('\n')
-    red = 1
-    indeks = 1
-    duzina = len(word)
-    vert = ''
 
-    for i in novi:
-        indeks += 1
-        if i == word[0]:
-            if reci[red-1][indeks-1:indeks-1+duzina] == word:
-                return [red, indeks, red, indeks+duzina-1]
-                break
-            else:
-                for s in novi:
-                    for t in s:
-                        indeks += 1
-                        if i == word[0]:
-                            for v in range(len(word)):
-                                vert += reci[red+v][indeks]
-                                return [red, indeks, red, indeks+len(word)]
-        if i == '\n':
-            red += 1
-            indeks = 0
+    rows = text.lower().replace(' ', '').split('\n')
+    for i, j in enumerate(rows, 1):
+        ind = j.find(word)
+        if ind > 0:
+            return [i, ind + 1, i, ind + len(word)]
+
+    max_len = 0
+    for row in rows:
+        if len(row) > max_len:
+            max_len = len(row)
+
+    for j in range(0, max_len):
+        col = ''
+        for i, row in enumerate(rows):
+            if j >= len(row):
+                continue
+            col += row[j]
+        pos = col.find(word)
+        if pos >= 0:
+            return [pos+1, j+1, pos+len(word), j+1]
 
 
 # These "asserts" using only for self-checking and not necessary for auto-testing
 if __name__ == '__main__':
     assert checkio("""DREAMING of apples on a wall,
-    And dreaming often, dear,
-    I dreamed that, if I counted all,
-    -How many would appear?""", "ten") == [2, 14, 2, 16]
-    # assert checkio("""He took his vorpal sword in hand:
-    # Long time the manxome foe he sought--
-    # So rested he by the Tumtum tree,
-    # And stood awhile in thought.
-    # And as in uffish thought he stood,
-    # The Jabberwock, with eyes of flame,
-    # Came whiffling through the tulgey wood,
-    # And burbled as it came!""", "noir") == [4, 16, 7, 16]
+And dreaming often, dear,
+I dreamed that, if I counted all,
+-How many would appear?""", "ten") == [2, 14, 2, 16]
+    assert checkio("""He took his vorpal sword in hand:
+Long time the manxome foe he sought--
+So rested he by the Tumtum tree,
+And stood awhile in thought.
+And as in uffish thought he stood,
+The Jabberwock, with eyes of flame,
+Came whiffling through the tulgey wood,
+And burbled as it came!""", "noir") == [4, 16, 7, 16]
