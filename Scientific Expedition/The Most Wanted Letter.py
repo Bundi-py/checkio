@@ -20,11 +20,6 @@ import string
 
 
 def checkio(text: str) -> str:
-
-    from collections import Counter
-
-
-def checkio(text: str) -> str:
     text = ''.join(filter(str.isalpha, text))
     text = text.replace(' ', '').lower()
     text = text.translate(str.maketrans('', '', string.punctuation))
@@ -33,7 +28,7 @@ def checkio(text: str) -> str:
     lista = []
     x = 0
     for i in recnik:
-        if i[1] >= x:
+        if i[1] >= x and i[0].isdigit() == False:
             x = i[1]
             lista.append(i[0])
 
