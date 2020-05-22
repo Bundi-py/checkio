@@ -63,3 +63,43 @@ if __name__ == '__main__':
     assert checkio(
         "To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it?") == 8
     print('If it is done - it is Done. Go Check it NOW!')
+
+
+# Berislav:
+# 1.
+
+# def checkio(text):
+#     count = 0
+#     words = re.split(r'[?,.!\s]', text.upper())
+#     for word in words:
+#         if (len(word) <=1 or re.search(r'[0-9]', word)):
+#             continue
+#         valid_word = True
+#         prev_ch = word[0]
+#         for ch in word[1:]:
+#             if ((ch in VOWELS and prev_ch in VOWELS) or (ch not in VOWELS and prev_ch not in VOWELS)):
+#                 valid_word = False
+#                 break
+#             prev_ch = ch
+#         if (valid_word):
+#             count += 1
+#     return count
+
+
+#  2.
+# def checkio(text):
+#     count = 0
+#     for word in re.split(r'[?,.!\s]', text.upper()):
+#         if (len(word) <=1 or re.search(r'[0-9]', word)):
+#             continue
+#         if (not re.search('[AEIOYU]{2}', word) and not re.search('[BCDFGHJKLMNPQRSTVWXZ]{2}', word)):   #  [x]{2} = najmanje dva pojavljivanja znakova iz skupa [x]
+#             count += 1
+#     return count
+
+# 3.
+# def checkio(text):
+#     count = 0
+#     for word in re.split(r'[?,.!\s]', text.upper()):
+#         if (len(word) > 1  and not re.search(r'[0-9]', word) and not re.search('[AEIOYU]{2}', word) and not re.search('[BCDFGHJKLMNPQRSTVWXZ]{2}', word)):
+#             count += 1
+#     return count
