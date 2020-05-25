@@ -17,7 +17,12 @@
 
 
 def remove_brackets(a):
-    # your code here
+    recnik = {}
+    x = 0
+    for i in a:
+        recnik[i] = x
+        x += 1
+
     return None
 
 
