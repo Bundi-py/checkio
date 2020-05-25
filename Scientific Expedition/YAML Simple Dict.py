@@ -1,15 +1,12 @@
 def yaml(a):
     recnik = {}
-    a = a.split('\n')
     b = []
-    c = []
+    a = a.split('\n')
+    a = [i for i in a if len(i) != 0]
+    a = sorted(a)
     for i in a:
-        if len(i) != 0:
-            b.append(i)
-    b = sorted(b)
-    for i in b:
-        c = i.split(':')
-        recnik[c[0]] = c[1].strip()
+        b = i.split(':')
+        recnik[b[0]] = b[1].strip()
     for k in recnik:
         if k == 'age':
             recnik[k] = int(recnik[k])
